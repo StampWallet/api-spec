@@ -1301,6 +1301,7 @@ components:
         nip: 1234567899
         krs: 1234567890
         regon: 12345678901234
+        description: "test asdas"
         ownerName: Jan Kowalski
 
     PostBusinessAccountResponse:
@@ -1512,6 +1513,8 @@ components:
                 type: string
     GetUserVirtualCardResponse:
       type: object
+      required: 
+        - points
       properties:
         points:
           type: integer
@@ -1638,6 +1641,8 @@ components:
         code: "1234567890"
     ShortVirtualCardAPIModel:
       type: object
+      required:
+        - points
       properties:
         businessDetails:
           $ref: '#/components/schemas/ShortBusinessDetailsAPIModel'
@@ -1646,6 +1651,8 @@ components:
 
     PublicBusinessDetailsAPIModel:
       type: object
+      required:
+        - description
       properties:
         publicId:
           type: string
