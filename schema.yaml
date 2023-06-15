@@ -134,7 +134,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DefaultResponse'
+              $ref: '#/components/schemas/PostAccountPasswordRequest'
         required: true
       responses:
         '200':
