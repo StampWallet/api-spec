@@ -432,11 +432,11 @@ paths:
       security: 
         - sessionToken: []
   /business/itemDefinitions/{definitionId}:
-    patch:
+    put:
       tags:
         - itemDefinitions
       summary: Update an exiting item definition
-      description: This endpoint is used to change details of existing item definitions (benefits).
+      description: This endpoint is used to change details of existing item definitions (benefits). Client has to provide all values, even if values do not change
       operationId: updateItemDefinition
       parameters:
         - in: path
@@ -449,7 +449,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchBusinessItemDefinitionRequest'
+              $ref: '#/components/schemas/PutBusinessItemDefinitionRequest'
         required: true
       responses:
         '200':
@@ -1344,12 +1344,52 @@ components:
         imageId:
           type: string
           example: S2VlNWVlQ2Foajh1Cg
-    PatchBusinessItemDefinitionRequest:
-      allOf: 
-        - $ref: '#/components/schemas/ItemDefinitionAPIModel'
+    PutBusinessItemDefinitionRequest:
+      type: object
+      properties:
+        name: 
+          type: string
+        price: 
+          type: integer
+          nullable: true
+        description: 
+          type: string
+        startDate: 
+          type: string
+          format: date-time
+          nullable: true
+        endDate: 
+          type: string
+          format: date-time
+          nullable: true
+        maxAmount: 
+          type: integer
+          nullable: true
+        available: 
+          type: boolean
     PostBusinessItemDefinitionRequest:
-      allOf:
-        - $ref: '#/components/schemas/ItemDefinitionAPIModel'
+      type: object
+      properties:
+        name: 
+          type: string
+        price: 
+          type: integer
+          nullable: true
+        description: 
+          type: string
+        startDate: 
+          type: string
+          format: date-time
+          nullable: true
+        endDate: 
+          type: string
+          format: date-time
+          nullable: true
+        maxAmount: 
+          type: integer
+          nullable: true
+        available: 
+          type: boolean
     PostBusinessItemDefinitionResponse:
       type: object
       properties:
@@ -1657,6 +1697,7 @@ components:
           type: string
         price: 
           type: integer
+          nullable: true
         description: 
           type: string
         imageId: 
@@ -1671,6 +1712,7 @@ components:
           nullable: true
         maxAmount: 
           type: integer
+          nullable: true
         available: 
           type: boolean
       example:
