@@ -1104,14 +1104,16 @@ paths:
       requestBody:
         description: File data
         content:
-          image/png:
+          multipart/form-data: 
             schema:
-              type: string
-              format: binary
-          image/jpg:
-            schema:
-              type: string
-              format: binary        
+              type: object
+              properties: 
+                file:  
+                  type: string
+                  format: binary
+            encoding: 
+              file: 
+                contentType: image/png, image/jpeg, image/webp
         required: true
       responses:
         '200':
